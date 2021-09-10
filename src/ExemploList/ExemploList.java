@@ -4,10 +4,7 @@
 
 package ExemploList;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ExemploList {
     public static void main(String[] args) {
@@ -73,16 +70,78 @@ public class ExemploList {
         }
         System.out.println(linha);
 
+//      Exiba a terceira nota adicionada
+//        usamos a função .get(), onde passa a posição e recebemos o elemento:.get(index i)
 
+        System.out.println("Exiba a terceira nota adicionada: "+notas.get(2));
+        System.out.println(notas);
+        System.out.println(linha);
 
+//      Exiba a menor nota
+//        podemos usar a função Collections.min() e passar uma colections que no caso aqui
+//        uma list é uma collection.
 
+        System.out.println("Exiba a menor nota: " + Collections.min(notas));
+        System.out.println(linha);
 
+//      Exiba a maior nota
+//        mesmo caso da função a cima, porém é utilizado a Collections.max()
 
+        System.out.println("Exiba a maior nota: " + Collections.max(notas));
+        System.out.println(linha);
 
+//      Exiba a soma dos valores
+//        podemos usar o método iterator que pega os valores e soma
 
+        Iterator<Double> iterator = notas.iterator();
+        Double soma = 0d;
+        while (iterator.hasNext()){ //enquanto tiver próximo elemento, entra no while
+            Double next = iterator.next(); //o next receber iterator.next onde pega o próximo elemento
+            soma += next; // e salva na variável soma
+        }
+        System.out.println("Exiba a soma dos valores: " + soma);
+        System.out.println(linha);
 
+//      Exiba a média das notas
+//        podemos pegar o valor da soma anterior e usar junto com o método .size() onde retorna um inteiro
+//        e assim podemos pegar para poder dividir junto a soma e descobrir a média
 
+        System.out.println("Exiba a média das notas: " + soma/notas.size());
+        System.out.println(linha);
 
+//      Remova a nota 0
+//        para remover existe o método remove, que podemos passar tanto a posição quanto o objeto
+//        remove(int index) ou remove(Object o)
 
+        System.out.println("Remova a nota 0: ");
+        notas.remove(0d);
+        System.out.println(notas);
+        System.out.println(linha);
+
+//      Remova as notas menores que 7 e exiba a lista
+//        caso de usar novamente o iterator. Reutilizarei a variável iterator ja declarada a cima.
+
+        System.out.println("Remova as notas menores que 7 e exiba a lista: ");
+        iterator = notas.iterator();
+        while(iterator.hasNext()){
+            Double next = iterator.next();
+            if(next < 7){
+                iterator.remove(); // aqui ele remove o último elemento verificado pelo iterator
+            }
+        }
+        System.out.println(notas);
+        System.out.println(linha);
+
+//      Remova toda a lista
+//        pode ser usado o método .clear() que remove tudo de dentro da lista
+
+        System.out.println("Apague toda a lista: ");
+        notas.clear();
+        System.out.println(notas);
+        System.out.println(linha);
+
+//      Confira se a lista está vazia
+//        usamos aqui o método.isEmpty() que retorna um boolean
+        System.out.println("Confira se a lista está vazia: " + notas.isEmpty());
     }
 }
